@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- <script src="./index.js"></script>
+    <link rel="stylesheet" href="./index.css" > -->
+  </head>
+
+  <body>
+    <div  style="text-align: right;">
+      <button style="text-align: right;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">集計画面</button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modal-body" class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row" style="margin: 30px 0">
+      <div class="col-6">
+        <center>
+          <button id="aaa" style="font-size: 30px; width:80%; height:100px;" class="btn btn-primary">aaa</button>
+        </center>
+      </div>
+      <div class="col-6">
+        <center>
+          <button id="bbb" style="font-size: 30px; width:80%; height:100px;" class="btn btn-primary">bbb</button>
+        </center>
+      </div>
+    </div>
+    <div class="row" style="margin: 30px 0">
+      <div class="col-6">
+        <center>
+          <button id="ccc" style="font-size: 30px; width:80%; height:100px;" class="btn btn-primary">ccc</button>
+        </center>
+      </div>
+      <div class="col-6">
+        <center>
+          <button id="ddd" style="font-size: 30px; width:80%; height:100px;" class="btn btn-primary">ddd</button>
+        </center>
+      </div>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  $(function(){
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var d = 0;
+
+    $("#aaa").click(function(){ 
+      a += 1; 
+      $("#modal-body").html("aaa: "+a+"<br>bbb: "+b+"<br>ccc: "+c+"<br>ddd: "+d);
+    });
+    $("#bbb").click(function(){ 
+      b += 1; 
+      $("#modal-body").html("aaa: "+a+"<br>bbb: "+b+"<br>ccc: "+c+"<br>ddd: "+d);
+    });
+    $("#ccc").click(function(){ 
+      c += 1; 
+      $("#modal-body").html("aaa: "+a+"<br>bbb: "+b+"<br>ccc: "+c+"<br>ddd: "+d);
+    });
+    $("#ddd").click(function(){ 
+      d += 1; 
+      $("#modal-body").html("aaa: "+a+"<br>bbb: "+b+"<br>ccc: "+c+"<br>ddd: "+d);
+    });
+  })
+</script>
+
+<style>
+</style>
