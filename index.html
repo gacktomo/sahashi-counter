@@ -11,8 +11,16 @@
       .btn-count {
         margin: 10px; 
         font-size: 30px; 
-        width:45%; 
         height:100px;
+      }
+      .btn-col-1 {
+        width:80%; 
+      }
+      .btn-col-2 {
+        width:40%; 
+      }
+      .btn-col-3 {
+        width:30%; 
       }
       .contain {
         padding: 20px;
@@ -40,6 +48,14 @@
               </button>
             </div>
             <div class="modal-body">
+              <h5>レイアウト</h5>
+              <select v-model="layout">
+                <option value="95%">1列</option>
+                <option active value="40%">2列</option>
+                <option value="30%">3列</option>
+              </select>
+              <br>
+              <br>
               <h5>集計</h5>
               <table class="table">
                 <tbody>
@@ -50,7 +66,7 @@
                   </tr>
                   <tr v-for="(button, i) in buttons">
                     <td v-if="button.edit" @click="editTitle(i)"> 
-                      <input autofocus @change="button.edit=false" v-model="button.name"/> </td>
+                      <input autofocus v-on:blur="button.edit = false" v-model="button.name"/> </td>
                     </td>
                     <td v-else @click="editTitle(i)"> {{button.name}} </td>
                     <td> {{button.num}} </td>
@@ -69,7 +85,7 @@
 
       <br> <br>
       <div class="contain">
-        <button v-for="(button, i) in buttons" class="btn btn-primary btn-count" @click="countUp(i)">{{button.name}}</button>
+        <button v-for="(button, i) in buttons" v-bind:style="{ width: layout }" class="btn btn-primary btn-count" @click="countUp(i)">{{button.name}}</button>
       </div>
 
     </div>
@@ -80,6 +96,7 @@
   var app = new Vue({
     el: '#app',
     data: {
+      layout: "40%",
       buttons: [],
     },
     mounted() {
