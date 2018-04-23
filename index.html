@@ -12,6 +12,11 @@
         margin: 10px; 
         font-size: 30px; 
         height:100px;
+        outline:none !important;
+        -webkit-transition:all .5s;
+      }
+      .btn-count:active {
+        transform: scale(0.95);
       }
       .btn-col-1 {
         width:80%; 
@@ -85,7 +90,7 @@
 
       <br> <br>
       <div class="contain">
-        <button v-for="(button, i) in buttons" v-bind:style="{ width: layout }" class="btn btn-primary btn-count" @click="countUp(i)">{{button.name}}</button>
+        <button v-for="(button, i) in buttons" v-bind:style="{ width: layout }" onfocus="this.blur();" class="btn btn-primary btn-count" @click="countUp(i)">{{button.name}}</button>
       </div>
 
     </div>
