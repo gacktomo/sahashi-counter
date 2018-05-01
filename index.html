@@ -8,6 +8,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
+      .slide-fade-enter-active {
+        transition: all .3s ease;
+      }
+      .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+      }
+      .slide-fade-enter, .slide-fade-leave-to
+      /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+      }
       .btn-count {
         margin: 10px; 
         font-size: 30px; 
@@ -22,6 +33,7 @@
       }
       .btn-count:active {
         transform: scale(0.95);
+        background-color: darkblue;
       }
       .btn-col-1 {
         width:80%; 
@@ -93,7 +105,14 @@
         </div>
       </div>
 
-      <br> <br>
+      <br>
+      <transition name="slide-fade">
+        <div style="height:50px;">
+          <div v-if="msgFlg" class="alert alert-primary" role="alert">
+            Thanks!!
+          </div>
+        </div>
+      </transition>
       <div class="contain">
         <button v-for="(button, i) in buttons" 
           v-bind:style="{ width: layout }" 
@@ -115,6 +134,7 @@
     data: {
       layout: "40%",
       buttons: [],
+      msgFlg: false,
     },
     mounted() {
       this.buttons = JSON.parse(localStorage.getItem('data')) || [{name:"testA",num:0,edit:false},{name:"testB",num:0,edit:false}];
@@ -122,6 +142,10 @@
     methods: {
       countUp(index) {
         this.buttons[index].num += 1;
+        this.msgFlg = true;
+        setTimeout(() => {
+          this.msgFlg = false;
+        }, 2000);
       },
       addButton() {
         this.buttons.push({name: "新しい項目", num: 0, edit: true});
