@@ -124,6 +124,9 @@
         </button>
       </div>
 
+      <audio id="sound" preload="auto">
+        <source src="./click.mp3" type="audio/mp3">
+      </audio>
     </div>
   </body>
 </html>
@@ -141,6 +144,7 @@
     },
     methods: {
       countUp(index) {
+        document.getElementById('sound').play();
         this.buttons[index].num += 1;
         this.msgFlg = true;
         setTimeout(() => {
